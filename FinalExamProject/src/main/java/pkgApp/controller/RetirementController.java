@@ -1,5 +1,6 @@
 package pkgApp.controller;
 
+import java.awt.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import pkgApp.RetirementApp;
+import pkgCore.Retirement;
 
 public class RetirementController implements Initializable {
 
@@ -32,7 +34,11 @@ public class RetirementController implements Initializable {
 	@FXML
 	private TextField txtMonthlySSI;
 	
+	@FXML
+	private Label txtSaveEachMonth;
 	
+	@FXML
+	private Label txtWhatYouNeedToSave;
 	
 
 	public RetirementApp getMainApp() {
@@ -44,7 +50,9 @@ public class RetirementController implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {		
+	public void initialize(URL location, ResourceBundle resources) {
+		txtSaveEachMonth.setText("");
+		txtWhatYouNeedToSave.setText("");
 	}
 	
 	@FXML
@@ -55,11 +63,34 @@ public class RetirementController implements Initializable {
 		txtAnnualReturn2.setText("");
 		txtRequiredIncome.setText("");
 		txtMonthlySSI.setText("");
+		txtSaveEachMonth.setText("");
+		txtWhatYouNeedToSave.setText("");
 	}
 	
 	@FXML
 	public void btnCalculate(ActionEvent event) {
-		System.out.println("Calculate pressed");
+		try {
+			Integer yearsToWork = new Integer(txtYearsToWork.getText());
+			Double annualReturn = new Double(txtAnnualReturn.getText());
+			Integer yearsRetired = new Integer(txtYearsRetired.getText());
+			Double annualReturn2 = new Double(txtAnnualReturn2.getText());
+			Double requiredIncome = new Double(txtRequiredIncome.getText());
+			Double monthlySSI = new Double(txtMonthlySSI.getText());
+			
+			Retirement r = new Retirement(yearsToWork, annualReturn, yearsRetired, annualReturn2, 
+					requiredIncome, monthlySSI);
+			
+			String save = Double.toString(r.AmountToSave());
+			String total = Double.toString(r.TotalAmountSaved());
+			
+			txtSaveEachMonth.setText(save);
+			txtWhatYouNeedToSave.setText(total);
+			
+			
+		}catch(Exception e) {
+			txtSaveEachMonth.setText("Invalid Inputs");
+			txtWhatYouNeedToSave.setText("Invalid Inputs");
+		}
 		
 		//	TODO: Call AmountToSave and TotalAmountSaved and populate 
 		
