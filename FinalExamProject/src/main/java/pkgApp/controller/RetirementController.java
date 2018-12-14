@@ -51,8 +51,8 @@ public class RetirementController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		txtSaveEachMonth.setText("");
-		txtWhatYouNeedToSave.setText("");
+		txtSaveEachMonth.setText(" ");
+		txtWhatYouNeedToSave.setText(" ");
 	}
 	
 	@FXML
