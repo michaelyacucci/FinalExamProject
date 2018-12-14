@@ -9,7 +9,7 @@ public class Retirement {
 	private double dRequiredIncome;
 	private double dMonthlySSI;
 	
-	//TODO: Build the contructor, getters and setters for the attributes above.
+	//TODO: Build the constructor, getters and setters for the attributes above.
 	
 	public double AmountToSave()
 	{
