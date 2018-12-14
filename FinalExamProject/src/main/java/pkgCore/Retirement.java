@@ -74,28 +74,11 @@ public class Retirement {
 	
 	public double AmountToSave()
 	{
-		//TODO: Determine the amount to save each month based on TotalAmountSaved, YearsToWork
-		//		and Annual return while working
-		
-		
-		return 0;
+		return FinanceLib.pv(dAnnualReturnRetired, 12*iYearsRetired, TotalAmountSaved(), 0, false);
 	}
-	
-	/*
-	 * apache poi - call office functions Maven Dependencies - poi-3.12 -
-	 * org.apache.poi.ss.formula.functions import
-	 * org.apache.poi.ss.formula.functions.*; FinanceLib.pv(rate, num payments,
-	 * payment each period, future value, false) assertEqual(expected, actual,
-	 * round) Double.parseDouble(txtAnnualReturn.getText());
-	 * txtAnnualReturn.setText(""); iterate through instead
-	 */
 
 	public double TotalAmountSaved()
 	{
-		//	TODO: Determine amount to be saved based on Monthly SSI, Required Income, Annual return during retirement
-		//		and number of years retired.
-		//
-		//FinanceLib.pv(rate, num payments, payment each period, future value, false)
-		return 0;
+		return FinanceLib.pv(dAnnualReturnWorking, 12*iYearsToWork, 0, dRequiredIncome - dMonthlySSI, false);
 	}
 }

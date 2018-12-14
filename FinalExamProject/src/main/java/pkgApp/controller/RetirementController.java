@@ -90,8 +90,6 @@ public class RetirementController implements Initializable {
 			txtWhatYouNeedToSave.setText("Invalid Inputs");
 		}
 		
-		//	TODO: Call AmountToSave and TotalAmountSaved and populate 
-		
 	}
 	
 }
